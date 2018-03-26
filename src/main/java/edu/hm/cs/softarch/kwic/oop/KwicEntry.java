@@ -46,7 +46,7 @@ public class KwicEntry {
 	 * @return ob in der Phrase Wörter auf das indizierte Wort folgen.
 	 */
 	public boolean hasPostContext() {
-		return indexOfWord != context.size();
+		return indexOfWord != context.size() - 1;
 	}
 
 	/**
