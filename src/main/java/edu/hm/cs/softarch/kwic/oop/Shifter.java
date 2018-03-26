@@ -3,25 +3,39 @@ package edu.hm.cs.softarch.kwic.oop;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Klasse zum Erstellen einer List von Indexeinträgen bestehend aus Wörtern und
+ * ihrem Kontext.
+ * 
+ * @author katz.bastian
+ *
+ */
 public class Shifter {
 
-	private List<WordWithContext> containedContexts = new ArrayList<>();
+	private List<KwicEntry> entries = new ArrayList<>();
 
+	/**
+	 * Nimmt eine neue Phrase auf, indem es für alle enthaltenen Wörter einen
+	 * Eintrag erstellt.
+	 * 
+	 * @param phrase Phrase oder Titel zur Indexerstellung
+	 */
 	public void addPhrase(String phrase) {
-		List<String> postContext = new LinkedList<>(Arrays.asList(phrase.trim().split(" ")));
-		List<String> preContext = new LinkedList<>();
+		List<String> context = Arrays.asList(phrase.trim().split(" "));
 
-		while (!postContext.isEmpty()) {
-			String word = postContext.remove(0);
-			containedContexts.add(new WordWithContext(word, preContext, postContext));
-			preContext.add(word);
+		for (int i = 0; i < context.size(); i++) {
+			entries.add(new KwicEntry(context, i));
 		}
+
 	}
 
-	public List<WordWithContext> getWordsWithContext() {
-		return Collections.unmodifiableList(containedContexts);
+	/**
+	 * Liefert die Liste aller Einträge
+	 * @return
+	 */
+	public List<KwicEntry> getEntries() {
+		return Collections.unmodifiableList(entries);
 	}
 }

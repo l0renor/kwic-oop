@@ -5,22 +5,27 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Klasse zum Sortieren einer List von Kwic-Index-Einträgen.
+ * 
+ * @author katz.bastian
+ */
 public class Sorter {
 
-	private List<WordWithContext> containedContexts = new ArrayList<>();
+	private List<KwicEntry> entries = new ArrayList<>();
 
 	public void init(Shifter shifter) {
-		containedContexts.addAll(shifter.getWordsWithContext());
-		containedContexts.sort(new Comparator<WordWithContext>() {
+		entries.addAll(shifter.getEntries());
+		entries.sort(new Comparator<KwicEntry>() {
 
 			@Override
-			public int compare(WordWithContext o1, WordWithContext o2) {
+			public int compare(KwicEntry o1, KwicEntry o2) {
 				return o1.getWord().compareTo(o2.getWord());
 			}
 		});
 	}
 
-	public List<WordWithContext> getWordsWithContext() {
-		return Collections.unmodifiableList(containedContexts);
+	public List<KwicEntry> getEntries() {
+		return Collections.unmodifiableList(entries);
 	}
 }
