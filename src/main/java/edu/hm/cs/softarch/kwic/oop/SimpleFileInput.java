@@ -25,9 +25,8 @@ public class SimpleFileInput {
 		this.fileName = fileName;
 	}
 
-	public List<String> read(Shifter shifter) {
+	public void read(Shifter shifter) {
 		Path inFile = Paths.get(fileName);
-		List<String> result = Collections.emptyList();
 		try {
 			for (String line : Files.readAllLines(inFile)) {
 				shifter.addPhrase(line);
@@ -36,6 +35,5 @@ public class SimpleFileInput {
 			LOG.error("Fehler beim Einlesen: " + e);
 			System.exit(1);
 		}
-		return result;
 	}
 }
