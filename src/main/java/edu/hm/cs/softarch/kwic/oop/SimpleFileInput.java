@@ -19,13 +19,13 @@ import org.slf4j.LoggerFactory;
 public class SimpleFileInput {
 	private static Logger LOG = LoggerFactory.getLogger(SimpleFileInput.class);
 
-	String fileName;
+	private String fileName;
 
 	public SimpleFileInput(String fileName) {
 		this.fileName = fileName;
 	}
 
-	List<String> read(Shifter shifter) {
+	public List<String> read(Shifter shifter) {
 		Path inFile = Paths.get(fileName);
 		List<String> result = Collections.emptyList();
 		try {
