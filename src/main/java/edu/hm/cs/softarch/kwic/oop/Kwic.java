@@ -8,10 +8,10 @@ package edu.hm.cs.softarch.kwic.oop;
  */
 public class Kwic {
 
-	private SimpleFileInput reader;
+	private reader reader;
 	private Shifter shifter;
 	private Sorter sorter;
-	private ConsoleOutput printer;
+	private Output printer;
 
 	/**
 	 * Konstruktor.
@@ -21,9 +21,9 @@ public class Kwic {
 	 */
 	public Kwic(String phraseFileName) {
 		reader = new SimpleFileInput(phraseFileName);
-		shifter = new Shifter();
-		sorter = new Sorter();
-		printer = new ConsoleOutput();
+		shifter = new KwicShifter();
+		sorter = new KwicSorter();
+		printer = new AltConsoleOutput();
 	}
 
 	/**

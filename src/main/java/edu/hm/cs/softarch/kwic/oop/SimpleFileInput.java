@@ -4,19 +4,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * Klasse zum Einlesen einer Datei mit Phrasen. Die Zeilen werden einem
- * {@link Shifter}-Objekt übergeben, das daraus die Einträge erstellt.
+ * {@link KwicShifter}-Objekt übergeben, das daraus die Einträge erstellt.
  * 
  * @author katz.bastian
  */
-public class SimpleFileInput {
+public class SimpleFileInput implements reader{
 	private static Logger LOG = LoggerFactory.getLogger(SimpleFileInput.class);
 
 	private String fileName;

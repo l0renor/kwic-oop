@@ -8,7 +8,7 @@ import java.util.List;
  * 
  * @author katz.bastian
  */
-public class ConsoleOutput {
+public class ConsoleOutput implements Output{
 
 	/**
 	 * Gibt ein Wort mit umgebendem Kontext aus.
@@ -21,15 +21,21 @@ public class ConsoleOutput {
 		for (KwicEntry kwicEntry : sorter.getEntries()) {
 			StringBuffer sb = new StringBuffer();
 
-			sb.append(kwicEntry.getWord());
+			if(!kwicEntry.getWord().equalsIgnoreCase("the")) {
+				sb.append(kwicEntry.getWord());
 
-			List<String> context = new ArrayList<String>(kwicEntry.getPostContext());
-			context.addAll(kwicEntry.getPreContext());
-			if (!context.isEmpty()) {
-				sb.append(" ");
-				sb.append(String.join(" ", context));
+				List<String> context = new ArrayList<String>(kwicEntry.getPostContext());
+				context.addAll(kwicEntry.getPreContext());
+				if (!context.isEmpty()) {
+					sb.append(" ");
+					sb.append(String.join(" ", context));
+					if ((kwicEntry.hasPostContext())){
+						sb.append(',');
+					}
+				}
+
+				System.out.println(sb);
 			}
-			System.out.println(sb);
 		}
 	}
 
